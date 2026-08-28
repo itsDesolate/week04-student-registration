@@ -64,19 +64,27 @@ Blade templates are used to create the student registration, student listing, an
 
 ### Request Validation
 
-Server-side validation is implemented to ensure that submitted information follows the required rules.
+Server-side validation is implemented in the `StudentController` to verify student information before it is stored in the database.
 
-Examples include:
+The registration process validates the following information:
 
-- Student ID is required and unique.
-- First name is required.
-- Last name is required.
-- Email must be valid and unique.
-- Mobile number must be numeric.
-- Program is required.
-- Profile picture must be a valid image file.
+- **Student ID** – required and must be unique.
+- **First Name** – required and must be a valid string.
+- **Last Name** – required and must be a valid string.
+- **Email Address** – required, must use a valid email format, and must be unique.
+- **Mobile Number** – required and must contain numeric information.
+- **Date of Birth** – required.
+- **Gender** – required.
+- **Program** – required.
+- **Year Level** – required.
+- **Address** – required.
+- **Profile Picture** – required and must be a supported image file.
 
-Server-side validation is important because validation must still be enforced even when client-side validation is bypassed.
+Validation prevents incomplete or invalid information from being stored in the `students` table.
+
+Server-side validation is especially important because client-side checks can be bypassed. The server must independently verify submitted data before processing the registration request.
+
+Validation also improves database integrity by ensuring that required information is present and that unique fields such as the Student ID and email address do not create duplicate records.
 
 ### Flash Messages
 
