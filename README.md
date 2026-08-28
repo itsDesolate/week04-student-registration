@@ -1,58 +1,129 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Week 04 – Student Registration System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel-based Student Registration System developed as part of the Week 04 activity. The application allows users to register students, validate submitted information, upload profile pictures, view student records, edit existing records, and delete student records.
 
-## About Laravel
+## Introduction
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The Student Registration System is a web application developed using Laravel and MySQL. It demonstrates the use of Laravel routing, controllers, models, migrations, Blade templates, form validation, database operations, file uploads, and session flash messages.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+The system provides a simple interface for managing student registration information while demonstrating the basic Laravel request lifecycle from a browser request to database interaction and response rendering.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Objectives
 
-## Learning Laravel
+The main objectives of this project are to:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Develop a functional student registration system using Laravel.
+- Create and manage student records using MySQL.
+- Implement Laravel routing and controller actions.
+- Apply server-side form validation.
+- Store uploaded student profile pictures.
+- Display stored student information and profile pictures.
+- Implement CRUD operations for student records.
+- Demonstrate Laravel's request lifecycle.
+- Document the application's database structure and registration flow.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Technologies Used
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+- Laravel
+- PHP
+- MySQL
+- Blade Templates
+- HTML
+- CSS
+- JavaScript
+- XAMPP
+- Git
+- GitHub
+- Visual Studio Code
 
-## Agentic Development
+## System Features
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### Student Registration
 
-```bash
-composer require laravel/boost --dev
+The application provides a registration form where users can enter student information such as:
 
-php artisan boost:install
-```
+- Student ID
+- First Name
+- Middle Name
+- Last Name
+- Date of Birth
+- Gender
+- Email
+- Mobile Number
+- Complete Address
+- Course / Program
+- Year Level
+- Profile Picture
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### Form Validation
 
-## Contributing
+The application validates required student information before saving the record.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Validation prevents incomplete or invalid information from being submitted to the database.
 
-## Code of Conduct
+### Profile Picture Upload
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Users can upload a profile picture during student registration.
 
-## Security Vulnerabilities
+Uploaded images are stored using Laravel's public storage system and can be displayed through the application.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Student Records
 
-## License
+Registered students can be viewed through the student list.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The system provides functionality to:
+
+- View student records
+- View individual student profiles
+- Edit student information
+- Delete student records
+
+### Flash Success Message
+
+After a successful registration or update, the application displays a success message to provide feedback to the user.
+
+## Laravel Request Lifecycle
+
+The basic request lifecycle used by this application is:
+
+1. The user accesses a URL through the browser.
+2. Laravel receives the HTTP request.
+3. The route defined in `routes/web.php` determines which controller action should handle the request.
+4. The `StudentController` processes the request.
+5. Validation is performed when required.
+6. The `Student` model communicates with the MySQL database.
+7. Uploaded profile pictures are stored using Laravel's storage system.
+8. The controller returns a response or redirects the user.
+9. Blade renders the resulting page in the browser.
+
+The general flow is:
+
+```text
+Browser
+   |
+   v
+HTTP Request
+   |
+   v
+routes/web.php
+   |
+   v
+StudentController
+   |
+   +------> Validation
+   |
+   +------> Student Model
+   |             |
+   |             v
+   |          MySQL
+   |
+   +------> File Storage
+   |
+   v
+Redirect / View
+   |
+   v
+Blade Template
+   |
+   v
+Browser Response
