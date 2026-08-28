@@ -1,129 +1,98 @@
-# Week 04 – Student Registration System
+# Week 4 – Student Registration System
 
-A Laravel-based Student Registration System developed as part of the Week 04 activity. The application allows users to register students, validate submitted information, upload profile pictures, view student records, edit existing records, and delete student records.
+## 1. Project Title
 
-## Introduction
+**Student Registration System**
 
-The Student Registration System is a web application developed using Laravel and MySQL. It demonstrates the use of Laravel routing, controllers, models, migrations, Blade templates, form validation, database operations, file uploads, and session flash messages.
+## 2. Introduction
 
-The system provides a simple interface for managing student registration information while demonstrating the basic Laravel request lifecycle from a browser request to database interaction and response rendering.
+The Student Registration System is a Laravel-based web application developed to replace a paper-based student registration process with a digital registration system.
 
-## Objectives
+The system allows students to submit their personal and academic information through an online registration form. The application validates the submitted information, stores student records in a MySQL database, handles profile picture uploads, displays success and validation messages, and provides a student profile page after successful registration.
 
-The main objectives of this project are to:
+This project demonstrates how Laravel can be used to develop structured, secure, and database-driven web applications.
 
-- Develop a functional student registration system using Laravel.
-- Create and manage student records using MySQL.
-- Implement Laravel routing and controller actions.
-- Apply server-side form validation.
-- Store uploaded student profile pictures.
-- Display stored student information and profile pictures.
-- Implement CRUD operations for student records.
-- Demonstrate Laravel's request lifecycle.
-- Document the application's database structure and registration flow.
+## 3. Objectives
 
-## Technologies Used
+The objectives accomplished during this activity are:
 
-- Laravel
-- PHP
-- MySQL
-- Blade Templates
-- HTML
-- CSS
-- JavaScript
-- XAMPP
-- Git
-- GitHub
-- Visual Studio Code
+- Build a student registration system using Laravel.
+- Create Blade templates for the registration interface.
+- Implement server-side request validation.
+- Store student information in a MySQL database.
+- Implement profile picture uploads using Laravel Storage.
+- Display success and validation error messages.
+- Display registered student information.
+- Understand the Laravel request lifecycle.
+- Practice Git and GitHub version control.
+- Build a professional GitHub portfolio project.
 
-## System Features
+## 4. Functional Requirements
 
-### Student Registration
+The system allows users to:
 
-The application provides a registration form where users can enter student information such as:
+- Register a student.
+- Upload a profile picture.
+- Validate required fields.
+- Display success notifications.
+- Display validation error messages.
+- Store student information in MySQL.
+- View registered student details after successful registration.
+
+## 5. Required Student Information
+
+The registration form contains:
 
 - Student ID
 - First Name
 - Middle Name
 - Last Name
+- Email Address
+- Mobile Number
 - Date of Birth
 - Gender
-- Email
-- Mobile Number
-- Complete Address
-- Course / Program
+- Program
 - Year Level
+- Address
 - Profile Picture
 
-### Form Validation
+## 6. Laravel Features Implemented
 
-The application validates required student information before saving the record.
+### Blade Forms
 
-Validation prevents incomplete or invalid information from being submitted to the database.
+Blade templates are used to create the student registration, student listing, and student profile interfaces.
 
-### Profile Picture Upload
+### Request Validation
 
-Users can upload a profile picture during student registration.
+Server-side validation is implemented to ensure that submitted information follows the required rules.
 
-Uploaded images are stored using Laravel's public storage system and can be displayed through the application.
+Examples include:
 
-### Student Records
+- Student ID is required and unique.
+- First name is required.
+- Last name is required.
+- Email must be valid and unique.
+- Mobile number must be numeric.
+- Program is required.
+- Profile picture must be a valid image file.
 
-Registered students can be viewed through the student list.
+Server-side validation is important because validation must still be enforced even when client-side validation is bypassed.
 
-The system provides functionality to:
+### Flash Messages
 
-- View student records
-- View individual student profiles
-- Edit student information
-- Delete student records
+A success notification is displayed after successful registration:
 
-### Flash Success Message
+> Student registered successfully!
 
-After a successful registration or update, the application displays a success message to provide feedback to the user.
+Validation errors are also displayed when submitted information does not meet the required rules.
 
-## Laravel Request Lifecycle
+### File Upload
 
-The basic request lifecycle used by this application is:
+The application allows users to upload a student profile picture.
 
-1. The user accesses a URL through the browser.
-2. Laravel receives the HTTP request.
-3. The route defined in `routes/web.php` determines which controller action should handle the request.
-4. The `StudentController` processes the request.
-5. Validation is performed when required.
-6. The `Student` model communicates with the MySQL database.
-7. Uploaded profile pictures are stored using Laravel's storage system.
-8. The controller returns a response or redirects the user.
-9. Blade renders the resulting page in the browser.
+Laravel Storage is used to handle uploaded images. The uploaded file path is stored in the database, while the actual image is stored using Laravel's public storage system.
 
-The general flow is:
+The storage link is created using:
 
-```text
-Browser
-   |
-   v
-HTTP Request
-   |
-   v
-routes/web.php
-   |
-   v
-StudentController
-   |
-   +------> Validation
-   |
-   +------> Student Model
-   |             |
-   |             v
-   |          MySQL
-   |
-   +------> File Storage
-   |
-   v
-Redirect / View
-   |
-   v
-Blade Template
-   |
-   v
-Browser Response
+```bash
+php artisan storage:link
